@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         My Dearest Direst Disaster / 最悪なる災厄人間に捧ぐ
-// @version      2.0.0
+// @version      2.0.1
 // @author       Codex
 // @description  PC Unity — original IL2CPP release and 2026 Mono/JIT remake
 // ==/UserScript==
@@ -8,7 +8,7 @@
 'use strict';
 
 const Mono = require('./libMono.js');
-const VERSION = '2.0.0';
+const VERSION = '2.0.1';
 const sendText = trans.send(text => text, '200+');
 
 const DEDUPE_MS = 30000;
@@ -31,6 +31,7 @@ function clean(raw) {
     return raw
         .replace(/%rbs([^{}%]+)\{[^{}]*\}%rbe/gi, '$1')
         .replace(/%rbs|%rbe/gi, '')
+        .replace(/%co\d+|%coe/gi, '')
         .replace(/[%$](?:dts|dte)/gi, '')
         .replace(/([\u3400-\u9fff]+)[(（][\u3040-\u30ffー]+[)）]/gu, '$1')
         .replace(/@n/gi, ' ')
